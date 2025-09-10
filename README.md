@@ -129,48 +129,94 @@ cd frontend
 npm run dev
 ```
 
-🌍 App runs at: `http://localhost:5173`
+🌐 **Application URL:** `http://localhost:5173`
 
------
+## 📚 API Documentation
 
-## 📚 API Endpoints
+### Authentication
 
-  - `POST /api/auth/register` – Register user
-  - `POST /api/auth/login` – Login
-  - `POST /api/events` – Create event (organizers)
-  - `GET /api/events` – Fetch all events
-  - `POST /api/bookings` – Book tickets
-  - `POST /api/payments/create-payment-intent` – Stripe checkout
-  - `POST /api/categories` – Add category (admin)
-  - …and more\!
+- `POST /api/auth/register` - Register new user
+- `POST /api/auth/login` - Login with email/phone and password
+- `POST /api/auth/google` - Google OAuth authentication
+- `POST /api/auth/logout` - Logout user
 
------
+### Events
 
-## 📂 Project Structure
+- `POST /api/events` - Create event (organizers)
+- `GET /api/events` - List all events
+- `GET /api/events/:id` - Get event details
+- `PATCH /api/events/:id` - Update event
+- `DELETE /api/events/:id` - Cancel event
+- `GET /api/events/:id/seats` - Get available seats
 
-```
-eventix/
+### Bookings
+
+- `POST /api/bookings` - Create booking
+- `GET /api/bookings/user` - Get user bookings
+- `GET /api/bookings/event/:eventId` - Get event bookings
+- `DELETE /api/bookings/:id` - Cancel booking
+- `POST /api/bookings/verify` - Verify ticket code
+
+### Users
+
+- `GET /api/users/profile` - Get user profile
+- `PATCH /api/users/update` - Update user profile
+- `DELETE /api/users/delete` - Delete own account
+- `DELETE /api/users/:id` - Admin delete user
+
+### Categories
+
+- `POST /api/categories` - Create category (admin)
+- `GET /api/categories` - List categories
+- `PATCH /api/categories/:id` - Update category
+- `DELETE /api/categories/:id` - Delete category
+
+### Contacts
+
+- `POST /api/contacts/general` - Submit general contact form
+- `POST /api/contacts/event/:eventId` - Contact event organizer
+- `GET /api/contacts/general` - Get general contacts (admin)
+- `GET /api/contacts/organizer` - Get organizer contacts
+- `PATCH /api/contacts/:contactId/status` - Update contact status
+
+### Reports
+
+- `POST /api/reports` - Report an event for inappropriate content
+- `GET /api/reports/my-reports` - Get user's own reports
+- `GET /api/reports` - Get all reports (admin)
+- `GET /api/reports/events/flagged` - Get flagged events (admin)
+- `PATCH /api/reports/:reportId/status` - Update report status (admin)
+
+### Payments
+
+- `POST /api/payments/create-payment-intent` - Create Stripe payment intent
+
+## Project Structure
+
+```text
+event-ticketing-platform/
 ├── backend/
 │   ├── src/
-│   │   ├── controllers/
-│   │   ├── middleware/
-│   │   ├── models/
-│   │   ├── routes/
-│   │   ├── utils/
-│   │   └── server.js
+│   │   ├── controllers/      # Request handlers
+│   │   ├── middleware/       # Authentication, error handling, rate limiting
+│   │   ├── models/          # MongoDB schemas
+│   │   ├── routes/          # API routes
+│   │   ├── utils/           # Helper functions
+│   │   ├── redis/           # Redis client and helpers
+│   │   ├── app.js           # Express app setup
+│   │   └── server.js        # Server entry point
 │   └── package.json
 └── frontend/
     ├── src/
-    │   ├── components/
-    │   ├── context/
-    │   ├── pages/
-    │   ├── services/
-    │   ├── api/
-    │   └── App.jsx
+    │   ├── components/      # Reusable components
+    │   ├── context/         # React context
+    │   ├── pages/           # Route components
+    │   ├── services/        # API services
+    │   ├── api/             # API client setup
+    │   └── App.jsx          # Main app component
     └── package.json
 ```
 
------
 
 ## 🌟 Contributing
 
@@ -189,3 +235,4 @@ MIT License © 2025 Eventix
 ```
 
 ```
+

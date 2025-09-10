@@ -1,4 +1,4 @@
-````md
+
 # 🎟️ Eventix – Event Ticketing & Management Platform
 
 A modern full-stack **event management and ticketing platform**. With Eventix, users can **browse events, book tickets, and manage bookings**, while organizers can **host events, track sales, and verify tickets with QR codes**. Admins have full control over **users, categories, flagged events, and system analytics**.
@@ -187,4 +187,5 @@ eventix/
 MIT License © 2025 Eventix
 
 ```
+
 ```
